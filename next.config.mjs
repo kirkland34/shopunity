@@ -1,3 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = { experimental: { typedRoutes: true } };
+const nextConfig = {
+  experimental: { typedRoutes: true },
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "cdn.simpleicons.org" },
+      { protocol: "https", hostname: "images.unsplash.com" }
+    ]
+  }
+};
 export default nextConfig;
