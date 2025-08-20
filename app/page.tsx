@@ -9,13 +9,7 @@ const logos = [
 
 export default function Home() {
   return (
-    <div className="mobile-wrap">
-      {/* Header */}
-      <header className="header">
-        <div className="brand">SHOPUNITY</div>
-        <div aria-hidden>🔔</div>
-      </header>
-
+    <>
       {/* Search */}
       <div className="search">
         <input placeholder="Search for products or stores" aria-label="Search" />
@@ -36,9 +30,8 @@ export default function Home() {
           {logos.map((b) => (
             <a key={b.slug} className="chip" href={b.href} aria-label={b.name}>
               <div className="logo">
-                {/* brand logos from simpleicons CDN */}
                 <Image
-                  src={`https://cdn.simpleicons.org/${b.slug}/111827`} // dark text color
+                  src={`https://cdn.simpleicons.org/${b.slug}/111827`}
                   alt={`${b.name} logo`}
                   width={28}
                   height={28}
@@ -49,7 +42,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Promo card */}
+        {/* Promo */}
         <div className="promo">
           <div className="badge">
             WE FOUND
@@ -81,17 +74,6 @@ export default function Home() {
           </button>
         </div>
       </section>
-
-      <div className="spacer" />
-
-      {/* Bottom nav */}
-      <nav className="bottomnav" aria-label="Bottom navigation">
-        <a className="navbtn navbtn-active" href="/"><span>🏠</span></a>
-        <a className="navbtn" href="/stores"><span>❤️</span></a>
-        <a className="navbtn" href="/stores"><span>🛍️</span></a>
-        <a className="navbtn" href="/contact"><span>📦</span></a>
-        <a className="navbtn" href="/api/whoami"><span>👤</span></a>
-      </nav>
-    </div>
+    </>
   );
 }
