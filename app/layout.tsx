@@ -1,7 +1,6 @@
-// app/layout.tsx
-import './globals.css';
+import "./globals.css";
 
-export const metadata = { title: 'ShopUnity', description: 'Unified shopping hub' };
+export const metadata = { title: "ShopUnity", description: "Unified shopping hub" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
