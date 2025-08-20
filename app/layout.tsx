@@ -1,7 +1,7 @@
 // app/layout.tsx
 import "./globals.css";
-import TopNav from "@/components/TopNav";
-import BottomNav from "@/components/BottomNav";
+import TopNav from "../components/TopNav";
+import BottomNav from "../components/BottomNav";
 
 export const metadata = { title: "ShopUnity", description: "Unified shopping hub" };
 
