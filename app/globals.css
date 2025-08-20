@@ -1,52 +1,26 @@
-/* app/globals.css */
-:root {
-  --bg: #fafafa;
-  --text: #111;
-  --muted: #6b7280;
-  --card: #ffffff;
-  --stroke: #e5e7eb;
-  --pill: #f3f4f6;
-  --accent: #0ea5e9;
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-a { color: #2563eb; text-decoration: none; }
-a:hover { text-decoration: underline; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.wrapper { max-width: 428px; margin: 0 auto; min-height: 100dvh; display: flex; flex-direction: column; background: var(--bg); }
-.header { display:flex; align-items:center; justify-content:space-between; padding: 18px 16px; position: sticky; top: 0; background: var(--bg); z-index: 10; }
-.brand { font-weight: 800; letter-spacing: 0.5px; font-size: 22px; }
-.bell { font-size: 22px; }
-
-.search { margin: 8px 16px 0; }
-.search input {
-  width: 100%; padding: 12px 14px; border-radius: 999px; border: 1px solid var(--stroke);
-  background: #fff; outline: none;
-}
-.tabs { display: flex; gap: 18px; padding: 12px 16px; overflow-x: auto; border-bottom: 1px solid var(--stroke); }
-.tab { white-space: nowrap; color: var(--muted); font-weight: 600; padding-bottom: 8px; }
-.tab.active { color: #111; border-bottom: 2px solid #111; }
-
-.section { padding: 16px; }
-.h2 { font-size: 18px; font-weight: 800; margin: 0 0 12px; }
-
-.chips { display:flex; gap:12px; overflow-x:auto; }
-.chip { min-width:92px; background: var(--card); border:1px solid var(--stroke); border-radius:16px; padding:12px 10px; text-align:center; }
-.logo { width:44px; height:44px; border-radius:12px; display:grid; place-items:center; margin:0 auto 8px; background: var(--pill); border: 1px solid var(--stroke); font-weight:700; }
-
-.promo { display:flex; gap:16px; background: var(--card); border:1px solid var(--stroke); border-radius:18px; padding:16px; margin-top:14px; align-items:center; }
-.promo .badge { background:#1f2937; color:#fff; font-weight:700; border-radius:12px; padding:10px; width:56%; }
-.promo .img { flex:1; background:#eef2ff; border-radius:12px; aspect-ratio: 4/3; }
-
-.card { background: var(--card); border:1px solid var(--stroke); border-radius:18px; padding:16px; display:flex; gap:16px; align-items:center; }
-.btn { background: var(--accent); color:#fff; border:none; border-radius:10px; padding:10px 14px; font-weight:700; cursor:pointer; }
-.btn:hover { filter: brightness(0.95); }
-
-.spacer { height: 68px; }
-.bottomnav {
-  position: sticky; bottom: 0; background: #0b1020; color: #fff; padding: 10px 12px;
-  display:flex; justify-content:space-between; border-top-left-radius:16px; border-top-right-radius:16px;
-}
-.navbtn { display:grid; place-items:center; width:56px; height:40px; border-radius:10px; opacity:0.75; }
-.navbtn.active { background: #111827; opacity:1; }
-.navicon { font-size: 18px; }
+/* helpers for the mobile shell */
+.mobile-wrap { @apply max-w-[428px] mx-auto min-h-dvh flex flex-col bg-bg text-text; }
+.header { @apply sticky top-0 z-10 bg-bg flex items-center justify-between px-4 py-4; }
+.brand { @apply font-extrabold tracking-wide text-xl; }
+.search { @apply px-4; }
+.search input { @apply w-full rounded-full border border-stroke bg-white outline-none px-4 py-3; }
+.tabs { @apply flex gap-5 px-4 py-3 overflow-x-auto border-b border-stroke; }
+.tab { @apply whitespace-nowrap text-muted font-semibold pb-2; }
+.tab-active { @apply text-text border-b-2 border-text; }
+.section { @apply p-4; }
+.h2 { @apply text-lg font-extrabold mb-3; }
+.chips { @apply flex gap-3 overflow-x-auto; }
+.chip { @apply min-w-[92px] rounded-xl border border-stroke bg-card p-3 text-center; }
+.logo { @apply w-11 h-11 rounded-xl grid place-items-center mx-auto mb-2 bg-pill border border-stroke; }
+.promo { @apply flex gap-4 bg-card border border-stroke rounded-2xl p-4 mt-4 items-center; }
+.badge { @apply bg-gray-900 text-white font-bold rounded-xl p-3 w-2/3; }
+.card { @apply bg-card border border-stroke rounded-2xl p-4 flex gap-4 items-center; }
+.btn { @apply bg-accent text-white font-bold rounded-lg px-4 py-2; }
+.spacer { @apply h-[68px]; }
+.bottomnav { @apply sticky bottom-0 bg-[#0b1020] text-white px-3 py-2 flex justify-between rounded-t-2xl; }
+.navbtn { @apply grid place-items-center w-14 h-10 rounded-lg opacity-75; }
+.navbtn-active { @apply bg-[#111827] opacity-100; }
