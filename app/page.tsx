@@ -1,11 +1,12 @@
-"use client";
-import Image from "next/image";
+'use client';
+
+import Image from 'next/image';
 
 const logos = [
-  { name: "Target", slug: "target", href: "/store/target" },
-  { name: "Burlington", slug: "burlington", href: "/stores" },
-  { name: "Sephora", slug: "sephora", href: "/stores" },
-  { name: "Ulta", slug: "ulta", href: "/stores" },
+  { name: 'Target', slug: 'target', href: '/store/target' },
+  { name: 'Burlington', slug: 'burlington', href: '/store/burlington' },
+  { name: 'Sephora', slug: 'sephora', href: '/store/sephora' },
+  { name: 'Ulta', slug: 'ulta', href: '/store/ulta' },
 ];
 
 export default function Home() {
@@ -13,7 +14,10 @@ export default function Home() {
     <>
       {/* Search */}
       <div className="search">
-        <input placeholder="Search for products or stores" aria-label="Search" />
+        <input
+          placeholder="Search for products or stores"
+          aria-label="Search"
+        />
       </div>
 
       {/* Tabs */}
@@ -27,38 +31,33 @@ export default function Home() {
       {/* Featured Stores */}
       <section className="section">
         <h2 className="h2">Featured Stores</h2>
-        <div className="chips">
-          {logos.map((b) => (
-            <a key={b.slug} className="chip" href={b.href} aria-label={b.name}>
-              <div className="logo">
-                <Image
-                  src={`https://cdn.simpleicons.org/${b.slug}/111827`}
-                  alt={`${b.name} logo`}
-                  width={28}
-                  height={28}
-                />
-              </div>
-              <div>{b.name}</div>
-            </a>
+        <ul className="logos">
+          {logos.map((s) => (
+            <li key={s.slug} className="logo">
+              <a href={s.href}>
+                <div className="logo-circle">{s.name[0]}</div>
+                <div className="logo-name">{s.name}</div>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
+      </section>
 
-        {/* Promo */}
-        <div className="promo">
-          <div className="badge">
-            WE FOUND<br />THIS CHEAPER<br />
-            <span className="text-sm font-semibold">Women&apos;s Sneakers</span>
-            <div className="mt-2 opacity-80 font-semibold">marshalls</div>
+      {/* Price find banner */}
+      <section className="section">
+        <div className="card">
+          <div className="flex-1 rounded-xl bg-[#1f2937] text-white p-6">
+            <p className="kicker">WE FOUND THIS CHEAPER</p>
+            <p>Women&apos;s Sneakers</p>
+            <p className="brand">marshalls</p>
           </div>
-          <div className="flex-1">
-            <Image
-              className="rounded-xl"
-              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop"
-              alt="Sneaker"
-              width={320}
-              height={240}
-            />
-          </div>
+          <Image
+            src="https://images.unsplash.com/photo-1542291026-7eec2642ff?auto=format&fit=crop&w=800&q=80"
+            alt="Sneaker"
+            width={320}
+            height={240}
+            className="rounded-xl"
+          />
         </div>
       </section>
 
@@ -67,9 +66,10 @@ export default function Home() {
         <h2 className="h2">Valentine’s Day Gift Ideas</h2>
         <div className="card">
           <div className="flex-1 rounded-xl bg-[#fde2e4] aspect-[4/3]" />
-          <button className="btn" onClick={() => alert("Recommendations coming soon!")}>
+          {/* NOTE: No onClick here—use a simple link so there are no event handler props */}
+          <a className="btn" href="/stores">
             GET RECOMMENDATIONS
-          </button>
+          </a>
         </div>
       </section>
     </>
