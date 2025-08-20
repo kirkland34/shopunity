@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: { typedRoutes: true },
+  // No `experimental.typedRoutes`
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "cdn.simpleicons.org" },
