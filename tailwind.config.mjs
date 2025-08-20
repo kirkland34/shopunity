@@ -1,10 +1,9 @@
-import type { Config } from "tailwindcss";
-
+/** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./data/**/*.{ts,tsx}"
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./data/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
     extend: {
@@ -17,10 +16,8 @@ export default {
         pill: "#f3f4f6",
         accent: "#0ea5e9"
       },
-      borderRadius: {
-        "2xl": "1rem"
-      }
+      borderRadius: { "2xl": "1rem" }
     }
   },
-  plugins: [],
-} satisfies Config;
+  plugins: []
+};
