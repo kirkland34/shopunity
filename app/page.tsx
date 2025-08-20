@@ -1,11 +1,19 @@
-// app/page.tsx
+import Image from "next/image";
+
+const logos = [
+  { name: "Target", slug: "target", href: "/store/target" },
+  { name: "Burlington", slug: "burlington", href: "/stores" },
+  { name: "Sephora", slug: "sephora", href: "/stores" },
+  { name: "Ulta", slug: "ulta", href: "/stores" },
+];
+
 export default function Home() {
   return (
-    <div className="wrapper">
+    <div className="mobile-wrap">
       {/* Header */}
       <header className="header">
         <div className="brand">SHOPUNITY</div>
-        <div className="bell">🔔</div>
+        <div aria-hidden>🔔</div>
       </header>
 
       {/* Search */}
@@ -15,7 +23,7 @@ export default function Home() {
 
       {/* Tabs */}
       <nav className="tabs" aria-label="Categories">
-        <div className="tab active">Fashion</div>
+        <div className="tab tab-active">Fashion</div>
         <div className="tab">Beauty</div>
         <div className="tab">Home</div>
         <div className="tab">Tech</div>
@@ -25,32 +33,41 @@ export default function Home() {
       <section className="section">
         <h2 className="h2">Featured Stores</h2>
         <div className="chips">
-          <a className="chip" href="/store/target">
-            <div className="logo">🎯</div>
-            <div>Target</div>
-          </a>
-          <a className="chip" href="/store/best-buy">
-            <div className="logo">🅱️</div>
-            <div>Best Buy</div>
-          </a>
-          <a className="chip" href="/stores">
-            <div className="logo">👜</div>
-            <div>Sephora</div>
-          </a>
-          <a className="chip" href="/stores">
-            <div className="logo">💄</div>
-            <div>Ulta</div>
-          </a>
+          {logos.map((b) => (
+            <a key={b.slug} className="chip" href={b.href} aria-label={b.name}>
+              <div className="logo">
+                {/* brand logos from simpleicons CDN */}
+                <Image
+                  src={`https://cdn.simpleicons.org/${b.slug}/111827`} // dark text color
+                  alt={`${b.name} logo`}
+                  width={28}
+                  height={28}
+                />
+              </div>
+              <div>{b.name}</div>
+            </a>
+          ))}
         </div>
 
         {/* Promo card */}
         <div className="promo">
           <div className="badge">
-            WE FOUND<br/>THIS CHEAPER<br/>
-            <small>Women&apos;s Sneakers</small>
-            <div style={{marginTop:8, opacity:.8, fontWeight:600}}>marshalls</div>
+            WE FOUND
+            <br />
+            THIS CHEAPER
+            <br />
+            <span className="text-sm font-semibold">Women&apos;s Sneakers</span>
+            <div className="mt-2 opacity-80 font-semibold">marshalls</div>
           </div>
-          <div className="img" aria-hidden />
+          <div className="flex-1">
+            <Image
+              className="rounded-xl"
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop"
+              alt="Sneaker"
+              width={320}
+              height={240}
+            />
+          </div>
         </div>
       </section>
 
@@ -58,8 +75,8 @@ export default function Home() {
       <section className="section">
         <h2 className="h2">Valentine’s Day Gift Ideas</h2>
         <div className="card">
-          <div style={{flex:1, background:'#fde2e4', borderRadius:12, aspectRatio:'4/3'}} />
-          <button className="btn" onClick={() => alert('Recommendations coming soon!')}>
+          <div className="flex-1 rounded-xl bg-[#fde2e4] aspect-[4/3]" />
+          <button className="btn" onClick={() => alert("Recommendations coming soon!")}>
             GET RECOMMENDATIONS
           </button>
         </div>
@@ -69,11 +86,11 @@ export default function Home() {
 
       {/* Bottom nav */}
       <nav className="bottomnav" aria-label="Bottom navigation">
-        <a className="navbtn active" href="/"><span className="navicon">🏠</span></a>
-        <a className="navbtn" href="/stores"><span className="navicon">❤️</span></a>
-        <a className="navbtn" href="/stores"><span className="navicon">🛍️</span></a>
-        <a className="navbtn" href="/contact"><span className="navicon">📦</span></a>
-        <a className="navbtn" href="/api/whoami"><span className="navicon">👤</span></a>
+        <a className="navbtn navbtn-active" href="/"><span>🏠</span></a>
+        <a className="navbtn" href="/stores"><span>❤️</span></a>
+        <a className="navbtn" href="/stores"><span>🛍️</span></a>
+        <a className="navbtn" href="/contact"><span>📦</span></a>
+        <a className="navbtn" href="/api/whoami"><span>👤</span></a>
       </nav>
     </div>
   );
