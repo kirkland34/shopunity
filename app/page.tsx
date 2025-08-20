@@ -45,10 +45,7 @@ export default function Home() {
         {/* Promo */}
         <div className="promo">
           <div className="badge">
-            WE FOUND
-            <br />
-            THIS CHEAPER
-            <br />
+            WE FOUND<br />THIS CHEAPER<br />
             <span className="text-sm font-semibold">Women&apos;s Sneakers</span>
             <div className="mt-2 opacity-80 font-semibold">marshalls</div>
           </div>
