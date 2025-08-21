@@ -31,3 +31,30 @@
     backdrop-filter: none !important;
   }
 }
+/* --- polish: hero & chips (append-only) --- */
+
+/* Hero/feature card */
+.promo {
+  @apply rounded-2xl border border-stroke/60
+         bg-white/70 supports-[backdrop-filter]:bg-white/40 backdrop-blur;
+}
+.promo .h2 { @apply tracking-tight; }
+.promo p   { @apply leading-snug; }
+
+/* Chips row spacing */
+.chips { @apply gap-2; }
+
+/* Individual chip */
+.chip {
+  @apply px-3 py-1.5 text-sm rounded-full
+         border border-stroke/70;
+}
+
+/* Active/hover states */
+.chip[aria-current="true"],
+.chip.is-active { @apply bg-black text-white border-black; }
+
+.chip:hover { @apply bg-black text-white border-black; }
+
+/* Slightly softer search input corners */
+.search input { @apply rounded-xl; }
