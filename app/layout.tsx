@@ -7,7 +7,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="bg-white text-black">
         <TopNav />
-        <main className="mx-auto max-w-screen-sm px-4 pt-16 pb-20">
+         <main
+  className="
+    mx-auto max-w-screen-sm px-4
+    pt-[calc(64px+env(safe-area-inset-top))]
+    pb-[calc(64px+env(safe-area-inset-bottom)+64px)]
+  "
+>
+
           {children}
         </main>
         <BottomNav />
