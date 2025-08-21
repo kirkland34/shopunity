@@ -3,8 +3,9 @@ import "./globals.css";
 import TopNav from "@/components/TopNav";
 import "./globals.css";
 import TopNav from "@/components/TopNav";
-import BottomNav from "@/components/BottomNav";
 import FooterLinks from "@/components/FooterLinks"; // ← add this
+import BottomNav from "@/components/BottomNav";
+
 import type { ReactNode } from "react";
 // (If you have Script/head from earlier, keep them as-is)
 
