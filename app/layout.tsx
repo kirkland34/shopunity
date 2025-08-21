@@ -1,20 +1,16 @@
-// app/layout.tsx
 import "./globals.css";
-import TopNav from "../components/TopNav";
-import BottomNav from "../components/BottomNav";
-
-export const metadata = { title: "ShopUnity", description: "Unified shopping hub" };
+import TopNav from "@/components/TopNav";
+import BottomNav from "@/components/BottomNav";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <div className="mobile-wrap">
-          <TopNav />
-          <main className="flex-1">{children}</main>
-          <div className="spacer" />
-          <BottomNav />
-        </div>
+      <body className="bg-white text-black">
+        <TopNav />
+        <main className="mx-auto max-w-screen-sm px-4 pt-16 pb-20">
+          {children}
+        </main>
+        <BottomNav />
       </body>
     </html>
   );
