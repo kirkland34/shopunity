@@ -30,7 +30,7 @@ export default function BottomNav() {
   const pathname = usePathname() || "/";
 
   return (
-    <footer className="fixed bottom-0 inset-x-0 z-50 border-t bg-neutral-900 text-white">
+    <footer className="fixed bottom-0 inset-x-0 z-50 bg-zinc-900/90 backdrop-blur supports-[backdrop-filter]:bg-zinc-900/70 pb-[env(safe-area-inset-bottom)] glass-solid">
       <nav className="mx-auto max-w-screen-sm">
         <ul className="grid grid-cols-5">
           {items.map(({ href, icon: Icon, label }) => {
