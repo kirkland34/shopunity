@@ -10,11 +10,12 @@ export default function StoreDetail({ params }: { params: { slug: string } }) {
     <div className="mobile-wrap">
       <h1 className="h2">{store.name}</h1>
 
+      {/* IMPORTANT: outbound goes through /out/<slug> */}
       <a
         className="btn mt-3 inline-block"
-        href={store.url}
+        href={`/out/${store.slug}`}
         target="_blank"
-        rel="noreferrer"
+        rel="noreferrer nofollow sponsored"
       >
         Visit {store.name}
       </a>
@@ -24,7 +25,7 @@ export default function StoreDetail({ params }: { params: { slug: string } }) {
   );
 }
 
-// (optional but nice) pre-render all detail pages at build time
+// optional: pre-render all store pages
 export function generateStaticParams() {
   return STORES.map((s) => ({ slug: s.slug }));
 }
