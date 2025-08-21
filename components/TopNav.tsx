@@ -18,7 +18,7 @@ export default function TopNav() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 pt-[env(safe-area-inset-top)] glass-solid" >
       <div className="mx-auto max-w-screen-sm px-4">
         <div className="flex h-14 items-center justify-between">
-          <div className="font-extrabold tracking-wide text-xl">SHOPUNITY</div>
+          <div className="font-extrabold tracking-wide text-xl">SHOPUNITY v7</div>
           <Bell className="h-5 w-5 text-neutral-600" />
         </div>
 
