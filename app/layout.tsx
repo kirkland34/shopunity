@@ -1,6 +1,40 @@
 // app/layout.tsx
 import "./globals.css";
 import TopNav from "@/components/TopNav";
+import "./globals.css";
+import TopNav from "@/components/TopNav";
+import BottomNav from "@/components/BottomNav";
+import FooterLinks from "@/components/FooterLinks"; // ← add this
+import type { ReactNode } from "react";
+// (If you have Script/head from earlier, keep them as-is)
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        {/* keep your existing head/meta/scripts */}
+      </head>
+      <body className="bg-white text-black">
+        <TopNav />
+        <main
+          className="
+            mx-auto max-w-screen-sm px-4
+            pt-[calc(64px+env(safe-area-inset-top))]
+            pb-[calc(64px+env(safe-area-inset-bottom)+64px)]
+          "
+        >
+          {children}
+        </main>
+
+        {/* NEW: tiny legal links strip */}
+        <FooterLinks />
+
+        <BottomNav />
+      </body>
+    </html>
+  );
+}
+
 import BottomNav from "@/components/BottomNav";
 import Script from "next/script";
 import type { ReactNode } from "react";
