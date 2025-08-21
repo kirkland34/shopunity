@@ -24,3 +24,10 @@
 .bottomnav { @apply sticky bottom-0 bg-[#0b1020] text-white px-3 py-2 flex justify-between rounded-t-2xl; }
 .navbtn { @apply grid place-items-center w-14 h-10 rounded-lg opacity-75; }
 .navbtn-active { @apply bg-[#111827] opacity-100; }
+/* Solidify glass for users who prefer less transparency (system setting) */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-solid {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: none !important;
+  }
+}
