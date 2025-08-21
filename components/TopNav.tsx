@@ -1,47 +1,47 @@
 "use client";
 
 import Link from "next/link";
-import { Bell } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Bell } from "lucide-react";
 import type { Route } from "next";
 
-const tabs = [
-  { label: "Home",    href: "/" as Route },
-  { label: "Stores",  href: "/stores" as Route },
-  { label: "Contact", href: "/contact" as Route },
-] as const;
-
-function Tab({
-  href,
-  active,
-  children,
-}: {
-  href: Route;
-  active: boolean;
-  children: React.ReactNode;
-}) {
-  return <Link href={href} className={active ? "tab-active" : "tab"}>{children}</Link>;
-}
+const tabs: { href: Route; label: string }[] = [
+  { href: "/", label: "Home" },
+  { href: "/stores", label: "Stores" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function TopNav() {
-  const pathname = usePathname();
-  const isActive = (to: Route) =>
-    to === "/" ? pathname === "/" : pathname.startsWith(to);
+  const pathname = usePathname() || "/";
 
   return (
-    <div>
-      <header className="header">
-        <div className="brand">SHOPUNITY</div>
-        <Bell size={20} />
-      </header>
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+      <div className="mx-auto max-w-screen-sm px-4">
+        <div className="flex h-14 items-center justify-between">
+          <div className="font-extrabold tracking-wide text-xl">SHOPUNITY</div>
+          <Bell className="h-5 w-5 text-neutral-600" />
+        </div>
 
-      <nav className="tabs" aria-label="Top Navigation">
-        {tabs.map((t) => (
-          <Tab key={t.label} href={t.href} active={isActive(t.href)}>
-            {t.label}
-          </Tab>
-        ))}
-      </nav>
-    </div>
+        <nav className="flex gap-6 -mb-px">
+          {tabs.map((t) => {
+            const active =
+              pathname === t.href || pathname.startsWith(`${t.href}/`);
+            return (
+              <Link
+                key={t.href}
+                href={t.href}
+                className={
+                  active
+                    ? "pb-3 border-b-2 border-black font-medium"
+                    : "pb-3 text-neutral-500 hover:text-black"
+                }
+              >
+                {t.label}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
+    </header>
   );
 }
