@@ -1,5 +1,33 @@
-/* subtle polish */
-.card { @apply shadow-sm transition-shadow; }
-.card:hover { @apply shadow-md; }
-.chip { @apply hover:-translate-y-0.5 transition-transform; }
-.h2 { @apply tracking-tight; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* helpers for the mobile shell */
+.mobile-wrap { @apply max-w-[428px] mx-auto min-h-dvh flex flex-col bg-bg text-text; }
+.header { @apply sticky top-0 z-10 bg-bg flex items-center justify-between px-4 py-4; }
+.brand { @apply font-extrabold tracking-wide text-xl; }
+.search { @apply px-4; }
+.search input { @apply w-full rounded-full border border-stroke bg-white outline-none px-4 py-3; }
+.tabs { @apply flex gap-5 px-4 py-3 overflow-x-auto border-b border-stroke; }
+.tab { @apply whitespace-nowrap text-muted font-semibold pb-2; }
+.tab-active { @apply text-text border-b-2 border-text; }
+.section { @apply p-4; }
+.h2 { @apply text-lg font-extrabold mb-3; }
+.chips { @apply flex gap-3 overflow-x-auto; }
+.chip { @apply min-w-[92px] rounded-xl border border-stroke bg-card p-3 text-center; }
+.logo { @apply w-11 h-11 rounded-xl grid place-items-center mx-auto mb-2 bg-pill border border-stroke; }
+.promo { @apply flex gap-4 bg-card border border-stroke rounded-2xl p-4 mt-4 items-center; }
+.badge { @apply bg-gray-900 text-white font-bold rounded-xl p-3 w-2/3; }
+.card { @apply bg-card border border-stroke rounded-2xl p-4 flex gap-4 items-center; }
+.btn { @apply bg-accent text-white font-bold rounded-lg px-4 py-2; }
+.spacer { @apply h-[68px]; }
+.bottomnav { @apply sticky bottom-0 bg-[#0b1020] text-white px-3 py-2 flex justify-between rounded-t-2xl; }
+.navbtn { @apply grid place-items-center w-14 h-10 rounded-lg opacity-75; }
+.navbtn-active { @apply bg-[#111827] opacity-100; }
+/* Solidify glass for users who prefer less transparency (system setting) */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-solid {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: none !important;
+  }
+}
