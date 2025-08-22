@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { STORES } from "@/data/stores";
+import {
+  Shirt,
+  Sparkles,
+  Home as HomeIcon,
+  Cpu,
+  ArrowRight,
+} from "lucide-react";
 
 const CATEGORIES = [
-  { label: "Fashion", q: "fashion" },
-  { label: "Beauty", q: "beauty" },
-  { label: "Home", q: "home" },
-  { label: "Tech", q: "tech" },
+  { label: "Fashion", q: "fashion", icon: Shirt },
+  { label: "Beauty", q: "beauty", icon: Sparkles },
+  { label: "Home", q: "home", icon: HomeIcon },
+  { label: "Tech", q: "tech", icon: Cpu },
 ];
 
 const FEATURED_SLUGS = [
@@ -21,13 +28,13 @@ const FEATURED_SLUGS = [
 
 export default function HomePage() {
   const featured = FEATURED_SLUGS
-    .map(slug => STORES.find(s => s.slug === slug))
+    .map((slug) => STORES.find((s) => s.slug === slug))
     .filter(Boolean) as typeof STORES;
 
   return (
-    <div className="mobile-wrap">
-      {/* Page title area (keeps things friendly & scannable) */}
-      <h2 className="h2">ShopUnity</h2>
+    <div className="mobile-wrap page-grad">
+      {/* Title */}
+      <h2 className="h2 mb-2">ShopUnity</h2>
 
       {/* Search */}
       <div className="search">
@@ -40,64 +47,68 @@ export default function HomePage() {
         </form>
       </div>
 
-      {/* Category chips */}
-      <div className="chips mb-3">
-        {CATEGORIES.map(c => (
+      {/* Category chips with icons */}
+      <div className="chips fancy-chips mb-3">
+        {CATEGORIES.map(({ label, q, icon: Icon }) => (
           <Link
-            key={c.q}
-            className="chip"
-            href={`/stores?query=${encodeURIComponent(c.q)}`}
+            key={q}
+            className="chip chip-icon"
+            href={`/stores?query=${encodeURIComponent(q)}`}
           >
-            {c.label}
+            <Icon className="chip-icn" size={16} />
+            <span>{label}</span>
           </Link>
         ))}
       </div>
 
       {/* Featured Stores */}
       <section className="section">
-        <h3 className="text-lg font-extrabold mb-3">Featured Stores</h3>
+        <div className="section-title">
+          <h3 className="h3">Featured Stores</h3>
+          <Link className="link-more" href="/stores">
+            View all <ArrowRight size={16} />
+          </Link>
+        </div>
 
         <div className="featured-scroller">
-          {featured.map(s => (
-            <div key={s.slug} className="store-card">
+          {featured.map((s) => (
+            <div key={s.slug} className="store-tile">
               <Link href={`/out/${s.slug}`} prefetch={false}>
-                <span className="sr-only">Visit {s.name}</span>
-                {/* Minimal logo placeholder (text) — swap for real logos later */}
-                <div className="logo-lite">{s.name[0]}</div>
+                <div className="logo-tile">
+                  {/* Fallback initial – swap to real logo later */}
+                  <span className="logo-letter">{s.name[0]}</span>
+                </div>
+                <div className="tile-name">{s.name}</div>
               </Link>
-              <div className="store-name">{s.name}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Promo card (simple, classy) */}
-      <div className="promo mb-4">
+      {/* Promo card */}
+      <div className="promo-v2 mb-4">
         <div className="promo-left">
           <div className="promo-kicker">We found this cheaper</div>
           <div className="promo-title">Women’s Sneakers</div>
-          <Link
-            href="/stores?query=sneakers"
-            className="btn mt-2 inline-block"
-          >
+          <Link href="/stores?query=sneakers" className="btn mt-2 inline-block">
             Browse
           </Link>
         </div>
-        <div className="promo-right" aria-hidden />
+        <div className="promo-art" aria-hidden />
       </div>
 
       {/* Seasonal row */}
       <section className="section">
-        <h3 className="text-lg font-extrabold mb-3">
-          Valentine’s Day Gift Ideas
-        </h3>
+        <div className="section-title">
+          <h3 className="h3">Valentine’s Day Gift Ideas</h3>
+          <Link className="link-more" href="/stores?query=gifts">
+            See ideas <ArrowRight size={16} />
+          </Link>
+        </div>
 
         <div className="card grid grid-cols-2 gap-3 items-center">
           <div className="gift-image" aria-hidden />
-          <Link
-            href="/stores?query=gifts"
-            className="btn justify-center text-center"
-          >
+          <Link href="/stores?query=gifts" className="btn text-center">
             Get Recommendations
           </Link>
         </div>
