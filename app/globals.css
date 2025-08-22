@@ -58,3 +58,25 @@
 
 /* Slightly softer search input corners */
 .search input { @apply rounded-xl; }
+
+/* --- Home polish helpers --- */
+.featured-scroller { @apply flex gap-3 overflow-x-auto pb-1; }
+.store-card { @apply w-[110px] shrink-0 text-center; }
+.store-card .logo-lite {
+  @apply grid place-items-center w-[82px] h-[82px] rounded-2xl bg-white border border-stroke mx-auto text-2xl font-extrabold text-neutral-700;
+}
+.store-name { @apply mt-2 text-sm font-medium text-neutral-800; }
+
+/* Promo (two-column, soft glass) */
+.promo {
+  @apply grid grid-cols-2 gap-3 bg-card border border-stroke rounded-2xl p-4;
+}
+.promo-left .promo-kicker { @apply text-xs uppercase tracking-wide text-neutral-500; }
+.promo-left .promo-title { @apply text-lg font-extrabold text-neutral-900; }
+.promo-right {
+  /* placeholder art – swap to real image later */
+  @apply rounded-xl bg-gradient-to-br from-neutral-100 to-neutral-200;
+}
+
+/* Gift image placeholder */
+.gift-image { @apply rounded-xl bg-gradient-to-br from-rose-100 to-rose-200 w-full h-[110px]; }
