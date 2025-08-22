@@ -2,7 +2,7 @@
 export default function Home() {
   return (
     <>
-      <h2 className="h2">ShopUnity v12 TEST</h2>
+      <h2 className="h2">ShopUnity</h2>
 
       {/* Search (GET -> /stores?query=...) */}
       <div className="search">
