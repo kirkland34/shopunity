@@ -1,40 +1,16 @@
+// app/page.tsx
 import Link from "next/link";
 import { STORES } from "@/data/stores";
-import {
-  Shirt,
-  Sparkles,
-  Home as HomeIcon,
-  Cpu,
-  ArrowRight,
-} from "lucide-react";
 
-const CATEGORIES = [
-  { label: "Fashion", q: "fashion", icon: Shirt },
-  { label: "Beauty", q: "beauty", icon: Sparkles },
-  { label: "Home", q: "home", icon: HomeIcon },
-  { label: "Tech", q: "tech", icon: Cpu },
-];
-
-const FEATURED_SLUGS = [
-  "target",
-  "burlington",
-  "sephora",
-  "ulta",
-  "amazon",
-  "walmart",
-  "homedepot",
-  "nike",
-];
+const FEATURED = ["target", "sephora", "ulta", "amazon"];
 
 export default function HomePage() {
-  const featured = FEATURED_SLUGS
-    .map((slug) => STORES.find((s) => s.slug === slug))
-    .filter(Boolean) as typeof STORES;
+  const bySlug = new Map(STORES.map((s) => [s.slug, s]));
+  const featured = FEATURED.map((slug) => bySlug.get(slug)).filter(Boolean) as typeof STORES;
 
   return (
-    <div className="mobile-wrap page-grad">
-      {/* Title */}
-      <h2 className="h2 mb-2">ShopUnity</h2>
+    <div className="mobile-wrap">
+      <h2 className="h2">ShopUnity</h2>
 
       {/* Search */}
       <div className="search">
@@ -47,74 +23,71 @@ export default function HomePage() {
         </form>
       </div>
 
-      {/* Category chips with icons */}
-      <div className="chips fancy-chips mb-3">
-        {CATEGORIES.map(({ label, q, icon: Icon }) => (
-          <Link
-            key={q}
-            className="chip chip-icon"
-            href={`/stores?query=${encodeURIComponent(q)}`}
-          >
-            <Icon className="chip-icn" size={16} />
-            <span>{label}</span>
-          </Link>
-        ))}
+      {/* Chips */}
+      <div className="chips">
+        <Link className="chip" href="/stores?query=Fashion">👗 Fashion</Link>
+        <Link className="chip" href="/stores?query=Beauty">💄 Beauty</Link>
+        <Link className="chip" href="/stores?query=Home">🏠 Home</Link>
+        <Link className="chip" href="/stores?query=Tech">💻 Tech</Link>
       </div>
 
-      {/* Featured Stores */}
+      {/* Featured stores */}
       <section className="section">
-        <div className="section-title">
-          <h3 className="h3">Featured Stores</h3>
-          <Link className="link-more" href="/stores">
-            View all <ArrowRight size={16} />
-          </Link>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="font-extrabold text-lg">Featured Stores</h3>
+          <Link href="/stores" className="text-sm text-neutral-600 hover:underline">View all</Link>
         </div>
 
-        <div className="featured-scroller">
+        <div className="flex gap-4 overflow-x-auto no-scrollbar px-1">
           {featured.map((s) => (
-            <div key={s.slug} className="store-tile">
-              <Link href={`/out/${s.slug}`} prefetch={false}>
-                <div className="logo-tile">
-                  {/* Fallback initial – swap to real logo later */}
+            <Link
+              key={s.slug}
+              href={`/out/${s.slug}`}
+              className="grid place-items-center logo-card"
+              aria-label={`Visit ${s.name}`}
+            >
+              <div className="logo-tile">
+                {s.logo ? (
+                  // plain <img> is fine here; Next/Image not required
+                  <img
+                    src={s.logo}
+                    alt={`${s.name} logo`}
+                    className="h-11 w-11 object-contain"
+                    loading="lazy"
+                  />
+                ) : (
                   <span className="logo-letter">{s.name[0]}</span>
-                </div>
-                <div className="tile-name">{s.name}</div>
-              </Link>
-            </div>
+                )}
+              </div>
+              <div className="text-xs mt-2">{s.name}</div>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* Promo card */}
-      <div className="promo-v2 mb-4">
-        <div className="promo-left">
-          <div className="promo-kicker">We found this cheaper</div>
-          <div className="promo-title">Women’s Sneakers</div>
-          <Link href="/stores?query=sneakers" className="btn mt-2 inline-block">
-            Browse
-          </Link>
-        </div>
-        <div className="promo-art" aria-hidden />
-      </div>
-
-      {/* Seasonal row */}
+      {/* Promo card (optional art via /public/promo/* files) */}
       <section className="section">
-        <div className="section-title">
-          <h3 className="h3">Valentine’s Day Gift Ideas</h3>
-          <Link className="link-more" href="/stores?query=gifts">
-            See ideas <ArrowRight size={16} />
-          </Link>
-        </div>
-
-        <div className="card grid grid-cols-2 gap-3 items-center">
-          <div className="gift-image" aria-hidden />
-          <Link href="/stores?query=gifts" className="btn text-center">
-            Get Recommendations
-          </Link>
+        <div className="promo flex items-center justify-between">
+          <div>
+            <div className="text-xs text-neutral-500">WE FOUND THIS CHEAPER</div>
+            <div className="font-extrabold mt-1">Women’s Sneakers</div>
+            <Link href="/stores?query=sneakers" className="btn mt-3 inline-block">Browse</Link>
+          </div>
+          <div className="promo-art bg-[url('/promo/sneaker.jpg')] bg-cover bg-center" />
         </div>
       </section>
 
-      <div className="spacer" />
+      {/* Gift ideas */}
+      <section className="section">
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="font-extrabold text-lg">Valentine’s Day Gift Ideas</h3>
+          <Link href="/stores?query=gifts" className="text-sm text-neutral-600 hover:underline">See ideas</Link>
+        </div>
+        <div className="promo flex items-center justify-between">
+          <div className="promo-art bg-[url('/promo/gift.jpg')] bg-cover bg-center" />
+          <Link href="/stores?query=recommendations" className="btn">Get Recommendations</Link>
+        </div>
+      </section>
     </div>
   );
 }
