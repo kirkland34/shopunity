@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Helps iPhone safe areas */}
+        {/* iPhone safe areas */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -17,8 +17,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="bg-white text-black">
         <TopNav />
-
-        {/* keep content clear of the sticky bars */}
         <main
           className="
             mx-auto max-w-screen-sm px-4
@@ -28,10 +26,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           {children}
         </main>
-
-        {/* tiny footer links */}
         <FooterLinks />
-
         <BottomNav />
       </body>
     </html>
