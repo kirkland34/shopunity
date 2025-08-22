@@ -20,6 +20,7 @@ export default function TopNav() {
           <div className="font-extrabold tracking-wide text-xl">SHOPUNITY v11</div>
 
 
+
           <Bell className="h-5 w-5 text-neutral-600" />
         </div>
 
