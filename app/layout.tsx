@@ -18,12 +18,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="bg-white text-black">
         <TopNav />
 
-        {/* Keep page content clear of sticky bars */}
-        <main className="mx-auto max-w-screen-sm px-4 pt-16 pb-[calc(env(safe-area-inset-bottom)+80px)]">
+        {/* keep content clear of the sticky bars */}
+        <main
+          className="
+            mx-auto max-w-screen-sm px-4
+            pt-[calc(64px+env(safe-area-inset-top))]
+            pb-[calc(64px+env(safe-area-inset-bottom)+64px)]
+          "
+        >
           {children}
         </main>
 
+        {/* tiny footer links */}
         <FooterLinks />
+
         <BottomNav />
       </body>
     </html>
