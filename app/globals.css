@@ -126,3 +126,18 @@
 
 /* Slightly lift the search field look */
 .search input { @apply shadow-sm; }
+
+/* --- polish additions --- */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.logo-tile { @apply grid place-items-center w-14 h-14 rounded-2xl bg-white border border-stroke; }
+.logo-letter { @apply text-lg font-extrabold text-neutral-700; }
+
+.store-card { @apply bg-white border border-stroke rounded-2xl p-3 transition;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.04);
+}
+.store-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+
+.promo { @apply bg-white border border-stroke rounded-2xl p-4; }
+.promo-art { @apply w-36 h-24 rounded-xl; }
