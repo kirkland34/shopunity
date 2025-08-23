@@ -1,4 +1,6 @@
 // app/page.tsx
+import LogoTile from "@/components/LogoTile";
+
 import Link from "next/link";
 import { STORES } from "@/data/stores";
 
