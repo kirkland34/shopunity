@@ -1,16 +1,11 @@
 'use client';
 
-import SavrTile from "../components/SavrTile";
-import React, { useState } from "react";
-
-// Single‑file React page you can drop into Next.js `app/page.tsx`.
-// TailwindCSS required. No external UI libs. Icons are inline SVGs.
-// Includes a visible "SAVR setup" placeholder (nav item + hero card + modal).
+import React from "react";
 
 export default function Page() {
-  const [open, setOpen] = useState(false);
-
   return (
+    <main className="min-h-screen bg-gray-50 text-gray-900">
+
     <main className="min-h-screen bg-gray-50 text-gray-900">
      
       {/* Hero */}
