@@ -1,4 +1,5 @@
-import SavrTile from "@/components/SavrTile";
+import SavrTile from "../components/SavrTile";
+
 
 import React, { useState } from "react";
 
