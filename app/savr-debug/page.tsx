@@ -1,4 +1,4 @@
-import SavrTile from "../components/SavrTile"; // keep relative here
+import SavrTile from "../components/SavrTile";
 
 export default function Page() {
   return (
