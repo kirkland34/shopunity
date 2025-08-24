@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "../components/Navbar"; // ⬅️ relative path (works without alias)
 
 export const metadata: Metadata = {
   title: "ShopUnity",
