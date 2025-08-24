@@ -29,7 +29,9 @@ export default function Navbar() {
               <span className="relative h-2.5 w-2.5 rounded-full bg-emerald-500" />
             </span>
             <span>SAVR setup</span>
-            <span className="rounded-full bg-black px-1.5 py-0.5 text-[10px] font-semibold tracking-wider text-white">NEW</span>
+            <span className="rounded-full bg-black px-1.5 py-0.5 text-[10px] font-semibold tracking-wider text-white">
+              NEW
+            </span>
           </Link>
         </div>
       </div>
