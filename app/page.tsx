@@ -12,47 +12,7 @@ export default function Page() {
 
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
-      {/* Top Nav */}
-      <header className="sticky top-0 z-30 w-full border-b border-gray-200 bg-white/70 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-black text-white shadow-sm">
-              {/* ShopUnity logo placeholder */}
-              <span className="text-xs font-semibold tracking-wider">SU</span>
-            </div>
-            <div className="leading-tight">
-              <h1 className="text-base font-semibold">ShopUnity</h1>
-              <p className="text-xs text-gray-500">Unified retail hub</p>
-            </div>
-          </div>
-
-          <nav className="hidden items-center gap-2 md:flex">
-            <NavBtn label="Home" active />
-            <NavBtn label="Vendors" />
-            <NavBtn label="Deals" />
-            <NavBtn label="Orders" />
-            <button
-              onClick={() => setOpen(true)}
-              className="group inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:border-gray-400 hover:shadow md:ml-2"
-              title="Open SAVR setup placeholder"
-            >
-              <BadgeDot />
-              <span>SAVR setup</span>
-              <span className="rounded-full bg-black px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">new</span>
-            </button>
-          </nav>
-
-          {/* Mobile menu trigger */}
-          <button
-            onClick={() => setOpen(true)}
-            className="md:hidden inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-medium shadow-sm"
-          >
-            <BadgeDot />
-            <span>SAVR</span>
-          </button>
-        </div>
-      </header>
-
+     
       {/* Hero */}
       <section className="mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 lg:px-8 lg:pt-16">
         <div className="grid gap-6 lg:grid-cols-3">
