@@ -124,6 +124,10 @@ export default function Page() {
           />
         </div>
       </section>
+          {/* ==== SAVR setup tile (added) ==== */}
+<section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8">
+  <SavrTile />
+</section>
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white">
