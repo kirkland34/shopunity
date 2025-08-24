@@ -259,6 +259,8 @@ function MiniTable({ title, headers, rows }: { title: string; headers: string[];
         </table>
       </div>
     </div>
+ 
+    </main>
   );
 }
 
