@@ -1,3 +1,5 @@
+'use client';
+
 import SavrTile from "../components/SavrTile";
 
 
