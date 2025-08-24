@@ -19,7 +19,6 @@ export default function Navbar() {
 
         {/* Right side actions */}
         <div className="flex items-center gap-2">
-          {/* SAVR setup link */}
           <Link
             href="/savr-setup"
             className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:border-gray-400"
@@ -30,9 +29,7 @@ export default function Navbar() {
               <span className="relative h-2.5 w-2.5 rounded-full bg-emerald-500" />
             </span>
             <span>SAVR setup</span>
-            <span className="rounded-full bg-black px-1.5 py-0.5 text-[10px] font-semibold tracking-wider text-white">
-              NEW
-            </span>
+            <span className="rounded-full bg-black px-1.5 py-0.5 text-[10px] font-semibold tracking-wider text-white">NEW</span>
           </Link>
         </div>
       </div>
