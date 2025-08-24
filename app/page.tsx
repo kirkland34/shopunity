@@ -1,95 +1,102 @@
 // app/page.tsx
-import LogoTile from "@/components/LogoTile";
-
 import Link from "next/link";
+import LogoTile from "@/components/LogoTile";
 import { STORES } from "@/data/stores";
 
-const FEATURED = ["target", "sephora", "ulta", "amazon"];
+export const metadata = {
+  title: "Shopunity",
+  description:
+    "Shopunity – a clean way to browse popular stores, search, and jump out to buy.",
+};
+
+const CATS = [
+  { slug: "fashion", icon: "👗", label: "Fashion" },
+  { slug: "beauty", icon: "💄", label: "Beauty" },
+  { slug: "home", icon: "🏠", label: "Home" },
+  { slug: "tech", icon: "💻", label: "Tech" },
+];
 
 export default function HomePage() {
-  const bySlug = new Map(STORES.map((s) => [s.slug, s]));
-  const featured = FEATURED.map((slug) => bySlug.get(slug)).filter(Boolean) as typeof STORES;
+  const featured = STORES.slice(0, 8);
 
   return (
-    <div className="mobile-wrap">
-      <h2 className="h2">ShopUnity</h2>
+    <div className="mx-auto max-w-screen-sm px-4 py-6">
+      <h1 className="sr-only">Shopunity</h1>
 
       {/* Search */}
-      <div className="search">
-        <form action="/stores" method="GET">
-          <input
-            name="query"
-            placeholder="Search for products or stores"
-            aria-label="Search"
-          />
-        </form>
-      </div>
+      <form action="/stores" method="GET" className="mb-3">
+        <input
+          name="q"
+          placeholder="Search for products or stores"
+          aria-label="Search"
+          className="w-full rounded-full border border-stroke bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-black/10"
+        />
+      </form>
 
-      {/* Chips */}
-      <div className="chips">
-        <Link className="chip" href="/stores?query=Fashion">👗 Fashion</Link>
-        <Link className="chip" href="/stores?query=Beauty">💄 Beauty</Link>
-        <Link className="chip" href="/stores?query=Home">🏠 Home</Link>
-        <Link className="chip" href="/stores?query=Tech">💻 Tech</Link>
+      {/* Category chips */}
+      <div className="chips mb-3">
+        {CATS.map((c) => (
+          <Link key={c.slug} href={`/stores?tag=${c.slug}`} className="chip">
+            <span className="mr-2">{c.icon}</span>
+            {c.label}
+          </Link>
+        ))}
       </div>
 
       {/* Featured stores */}
-      <section className="section">
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="font-extrabold text-lg">Featured Stores</h3>
-          <Link href="/stores" className="text-sm text-neutral-600 hover:underline">View all</Link>
-        </div>
+      <div className="mb-1 flex items-center justify-between">
+        <h2 className="h2">Featured Stores</h2>
+        <Link
+          href="/stores"
+          className="text-sm text-neutral-600 hover:underline"
+        >
+          View all
+        </Link>
+      </div>
 
-        <div className="flex gap-4 overflow-x-auto no-scrollbar px-1">
-          {featured.map((s) => (
-            <Link
-              key={s.slug}
-              href={`/out/${s.slug}`}
-              className="grid place-items-center logo-card"
-              aria-label={`Visit ${s.name}`}
-            >
-              <div className="logo-tile">
-                {s.logo ? (
-                  // plain <img> is fine here; Next/Image not required
-                  <img
-                    src={s.logo}
-                    alt={`${s.name} logo`}
-                    className="h-11 w-11 object-contain"
-                    loading="lazy"
-                  />
-                ) : (
-                  <span className="logo-letter">{s.name[0]}</span>
-                )}
-              </div>
-              <div className="text-xs mt-2">{s.name}</div>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <div className="tabs mb-4 no-scrollbar">
+        {featured.map((s) => (
+          <div key={s.slug} className="logo-tile-wrap">
+            {/* ⬇️ THIS is what stops the alt text from appearing */}
+            <LogoTile src={s.logo} letter={s.name[0]} />
 
-      {/* Promo card (optional art via /public/promo/* files) */}
-      <section className="section">
-        <div className="promo flex items-center justify-between">
-          <div>
-            <div className="text-xs text-neutral-500">WE FOUND THIS CHEAPER</div>
-            <div className="font-extrabold mt-1">Women’s Sneakers</div>
-            <Link href="/stores?query=sneakers" className="btn mt-3 inline-block">Browse</Link>
+            <div className="text-xs text-neutral-700 mt-2 text-center truncate w-[72px]">
+              {s.name}
+            </div>
           </div>
-          <div className="promo-art bg-[url('/promo/sneaker.jpg')] bg-cover bg-center" />
-        </div>
-      </section>
+        ))}
+      </div>
 
-      {/* Gift ideas */}
-      <section className="section">
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="font-extrabold text-lg">Valentine’s Day Gift Ideas</h3>
-          <Link href="/stores?query=gifts" className="text-sm text-neutral-600 hover:underline">See ideas</Link>
+      {/* Promo card (placeholder art) */}
+      <div className="promo mb-6 rounded-2xl border border-stroke bg-white p-4">
+        <div className="text-xs text-neutral-500 mb-1">
+          WE FOUND THIS CHEAPER
         </div>
-        <div className="promo flex items-center justify-between">
-          <div className="promo-art bg-[url('/promo/gift.jpg')] bg-cover bg-center" />
-          <Link href="/stores?query=recommendations" className="btn">Get Recommendations</Link>
+        <div className="flex items-center gap-3">
+          <div className="font-medium">Women’s Sneakers</div>
+          <a
+            href="/stores?q=sneakers"
+            className="ml-auto rounded-full bg-blue-600 px-4 py-2 text-white text-sm font-medium hover:bg-blue-700"
+          >
+            Browse
+          </a>
         </div>
-      </section>
+        <div className="promo-art mt-3 h-28 rounded-xl bg-[#f3f6f8]" />
+      </div>
+
+      {/* Ideas card */}
+      <div className="rounded-2xl border border-stroke bg-white p-4">
+        <div className="mb-3 font-semibold">Valentine’s Day Gift Ideas</div>
+        <div className="grid grid-cols-5 gap-3">
+          <div className="col-span-3 h-28 rounded-xl bg-[#fde6ea]" />
+          <Link
+            href="/stores?q=gift"
+            className="col-span-2 grid place-items-center rounded-xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-700"
+          >
+            Get Recommendations
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
