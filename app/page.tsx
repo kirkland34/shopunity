@@ -1,3 +1,5 @@
+import SavrTile from "@/components/SavrTile";
+
 import React, { useState } from "react";
 
 // Single‑file React page you can drop into Next.js `app/page.tsx`.
