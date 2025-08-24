@@ -1,35 +1,18 @@
-// app/layout.tsx
+import type { Metadata } from "next";
 import "./globals.css";
-import TopNav from "@/components/TopNav";
-import BottomNav from "@/components/BottomNav";
-import { Inter } from "next/font/google";
-import type { ReactNode } from "react";
+import Navbar from "@/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
-export const metadata = {
-  title: "ShopUnity — Find & Shop Top Stores",
-  description: "Browse top US retailers in one place. Fast search, smart links, and seasonal picks.",
-  icons: { icon: "/favicon.ico" },
-  openGraph: {
-    title: "ShopUnity",
-    description: "Browse top US retailers in one place.",
-    url: "https://shopunity.vercel.app",
-    siteName: "ShopUnity",
-    images: [{ url: "/og.jpg", width: 1200, height: 630 }],
-    locale: "en_US",
-    type: "website",
-  },
+export const metadata: Metadata = {
+  title: "ShopUnity",
+  description: "Unified retail hub",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-white text-black`}>
-        <TopNav />
-        <main className="mx-auto max-w-screen-sm px-4 pt-[calc(64px+env(safe-area-inset-top))] pb-[calc(64px+env(safe-area-inset-bottom)+64px)]">
-          {children}
-        </main>
-        <BottomNav />
+      <body className="min-h-screen bg-gray-50 text-gray-900">
+        <Navbar />
+        {children}
       </body>
     </html>
   );
