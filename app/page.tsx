@@ -1,11 +1,11 @@
 'use client';
+
 import React from "react";
 import Link from "next/link";
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
-
      
       {/* Hero */}
       <section className="mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 lg:px-8 lg:pt-16">
