@@ -23,6 +23,22 @@ export default function Page() {
   </div>
 </div>
     </main>
+    {/* ===== DEBUG SAVR BANNER (remove later) ===== */}
+<div id="savr-debug-banner" className="mx-auto max-w-7xl px-4 pt-4">
+  <div className="flex items-center justify-between rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3">
+    <div className="text-emerald-800 text-sm">
+      DEBUG: This is the latest build.
+    </div>
+    <Link
+      href="/savr-setup"
+      className="inline-flex items-center gap-2 rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-emerald-700"
+    >
+      <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+      <span>Open SAVR setup</span>
+    </Link>
+  </div>
+</div>
+
   );
 }
 
