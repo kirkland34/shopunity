@@ -1,19 +1,15 @@
 'use client';
 
-import React from "react";F
+import React from "react";
 import Link from "next/link";
+import SavrEntryPoints from "@/components/SavrEntryPoints";
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
-      
-     {/* ===== DEBUG SAVR BANNER (remove later) ===== */}
-<div id="savr-debug-banner" className="mx-auto max-w-7xl px-4 pt-4">
-  <div className="flex items-center justify-between rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3">
-    <div className="text-emerald-800 text-sm">
-      DEBUG: This banner proves this is the latest build.
-    </div>
-    <Link
+     <SavrEntryPoints />
+ 
+         <Link
       href="/savr-setup"
       className="inline-flex items-center gap-2 rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-emerald-700"
     >
