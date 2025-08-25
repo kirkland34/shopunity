@@ -7,7 +7,9 @@ export default function SavrSetupPage() {
       <p className="mt-2 text-gray-600">
         Reserve this space to connect ShopUnity to your SAVR cashback + vendor network. We’ll wire real endpoints when you’re ready.
       </p>
-
+</main>
+  );
+}
       <section className="mt-6 grid gap-4 sm:grid-cols-2">
         <Card title="Merchant Keys" desc="Save your SAVR Merchant ID, API key, webhook secret." cta="Add credentials" />
         <Card title="Payout Wallet" desc="Connect bank account or stablecoin wallet for payouts." cta="Connect wallet" />
