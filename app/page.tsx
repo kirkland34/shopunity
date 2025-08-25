@@ -13,7 +13,16 @@ export default function Page() {
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-bold sm:text-3xl">Run all your shops in one place</h2>
             <p className="mt-2 max-w-2xl text-gray-600">Manage vendors, publish deals, track orders, and plug into cashback with SAVR.</p>
-
+            <div className="mt-6">
+  <Link
+    href="/savr-setup"
+    className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700"
+  >
+    <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+    <span>Open SAVR setup</span>
+  </Link>
+</div>
+  
             {/* KPI cards */}
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <KPI title="Active Vendors" value="128" trend="+6 this week" />
