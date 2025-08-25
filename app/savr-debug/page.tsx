@@ -1,10 +1,13 @@
-import SavrTile from "../components/SavrTile";
+// app/savr-debug/page.tsx
+import SavrTile from "@/components/SavrTile";
 
-export default function Page() {
+export default function SavrDebugPage() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-10">
-      <h1 className="text-2xl font-bold mb-4">SAVR Debug</h1>
-      <SavrTile />
+    <main className="max-w-2xl mx-auto p-6">
+      <h1 className="text-xl font-semibold mb-4">SAVR Debug</h1>
+      <div className="mt-4">
+        <SavrTile />
+      </div>
     </main>
   );
 }
