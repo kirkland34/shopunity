@@ -21,7 +21,12 @@ export default function Page() {
     </Link>
   </div>
 </div>
+    </main>
+  );
+}
 
+
+      
 {/* ===== STICKY SAVR BUTTON (remove later) ===== */}
 <div id="savr-sticky" className="fixed inset-x-0 bottom-4 z-[100] mx-auto w-fit">
   <Link
