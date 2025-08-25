@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-// If your project uses the "@/components/*" alias, switch the two imports below to that alias.
-import Navbar from "../components/Navbar";
-import SavrEntryPoints from "../components/SavrEntryPoints";
+import Navbar from "@/components/Navbar";
+import SavrEntryPoints from "@/components/SavrEntryPoints";
 
 export const metadata: Metadata = {
   title: "ShopUnity",
