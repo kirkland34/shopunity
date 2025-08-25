@@ -1,11 +1,12 @@
 'use client';
 
-import React from "react";
+import React from "react";F
 import Link from "next/link";
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
+      
      {/* ===== DEBUG SAVR BANNER (remove later) ===== */}
 <div id="savr-debug-banner" className="mx-auto max-w-7xl px-4 pt-4">
   <div className="flex items-center justify-between rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3">
